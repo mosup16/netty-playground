@@ -1,6 +1,5 @@
 package echo.client;
 
-import echo.Utils;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -37,7 +36,7 @@ public class EchoClient {
         try {
             client.group(group)
                     .channel(NioSocketChannel.class)
-                    .handler(Utils.channelInitializerWithSocketChannel(handler))
+                    .handler(handler)
                     .remoteAddress(new InetSocketAddress(host, port))
                     .connect()
                     .sync()
