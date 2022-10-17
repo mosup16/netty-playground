@@ -1,6 +1,5 @@
 package echo.server;
 
-import echo.Utils;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -18,7 +17,7 @@ public class EchoServer {
         try {
             server.group(group)
                     .channel(NioServerSocketChannel.class) // the concrete type of Channel to be initialized
-                    .childHandler(Utils.channelInitializerWithSocketChannel(echoServerHandler)) // add channel handlers with ChannelInitializer
+                    .childHandler(echoServerHandler)
                     .bind(port).sync()
                     .channel()
                     .closeFuture().sync()
